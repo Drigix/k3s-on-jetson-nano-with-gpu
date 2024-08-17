@@ -1,5 +1,11 @@
 # K3S cluster installation using GPU on Jetson nano devices
 
+## Introduction
+Together with a couple of other students, we carried out a project in which we operated on a K3S cluster built from Jetson nano edge devices. Each of the aforementioned devices has an NVIDIA graphics card so that work can be greatly accelerated. But first you need to do the configuration so that the system, Docker and eventually the K3S cluster can access the GPU.
+It turned out that the instructions and documentation from the various sites are not well written and there are a lot of discrepancies especially in the versions of Ubuntu, CUDY and NVIDI tools.
+
+Therefore, we decided to write down the instructions, which took us no small amount of time.
+
 ## Update and install the necessary libraries
 ```bash
 sudo apt-get dist-upgrade
