@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jetson-pytorch
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jetson-pytorch
+  template:
+    metadata:
+      labels:
+        app: jetson-pytorch
+    spec:
+      containers:
+      - name: jetson-pytorch
+        image: alex480/jetson-pytorch:latest
+        resources:
+          limits:
+            nvidia.com/gpu: 1 # Request one GPU
+        ports:
+        - containerPort: 8888
