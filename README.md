@@ -77,18 +77,14 @@ For the cluster to function properly, it is necessary to store files in specific
 rm -rf /var/lib/rancher
 rm -rf /etc/rancher
 rm -rf /opt/cni/bin
-rm -rf /var/lib/calico
-rm -rf /var/run/calico
 ```
 The installation starts by creating new locations that will be needed for calico to work (the network interface in the cluster).
 ```bash
 mkdir -p /opt/cni/bin
-mkdir /var/lib/calico
-mkdir -p /var/run/calico
 ```
 Once the locations for the network interface exist, you can run the command to create a master.
 ```bash
-curl -sfL https://get.k3s.io/ | sh -sv - --flannel-backend=none --disable-network-policy --write-kubeconfig-mode 644 --node-name master --cluster-cidr=10.42.0.0/16 --docker
+curl -sfL https://get.k3s.io/ | sh -sv - --docker
 ```
 To check if everything started correctly, you can execute the following commands:
 ```bash
@@ -103,13 +99,7 @@ sudo kubectl get nodes
 ```
 ![Control plane ready](/images/control-plane-ready.png)
 
-#### Calico
-Then you can install calico to make the cluster communication possible.
-```bash
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/custom-resources.yaml
-```
-To check if calico containers have started use the command below:
+To check if containers have started use the command below:
 ```bash
 watch kubectl get pods --all-namespaces
 ```
@@ -124,8 +114,6 @@ rm -rf /etc/rancher
 
 ```bash
 mkdir -p /opt/cni/bin
-mkdir /var/lib/calico
-mkdir -p /var/run/calico
 ```
 Starting workers requires providing a master token, which can be read using the command:
 ```bash
