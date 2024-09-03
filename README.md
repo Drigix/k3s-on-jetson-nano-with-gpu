@@ -171,3 +171,18 @@ spec:
 ```bash
 kubectl apply -f jetson-nano-pytorch.yaml
 ```
+Enter into pod by start the command below, with id of this pod ***POD_ID***. If you don't know pod id start first the second command and copy it.
+```bash
+kubectl exec -it jetson-pytorch-POD_ID -- /bin/bash 
+```
+
+```bash
+kubectl get pods -o wide
+```
+
+After this you can start python with torch and check cuda is available.
+```bash
+python3
+import torch
+print(torch.cuda.is_available())
+```
