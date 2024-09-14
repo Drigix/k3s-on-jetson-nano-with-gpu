@@ -7,6 +7,15 @@ It turned out that the instructions and documentation from the various sites are
 Therefore, we decided to write down the instructions, which took us no small amount of time.
 
 ## System installation
+Necessary components to installation:
+- Jetson Nano device
+- SD card (minimum capacity 32GB)
+- Power cable
+Additional components:
+- Cooling fan (device will be heat up when working on GPU)
+- RJ-45 cable (more stable and fast connection)
+
+After add all necessary components the system can be installed to device. To do this you need to download it from official site and boot to SD card by ETCHER (https://etcher.balena.io).
 
 ## Update and install the necessary libraries
 ```bash
