@@ -93,7 +93,7 @@ mkdir -p /opt/cni/bin
 ```
 Once the locations for the network interface exist, you can run the command to create a master.
 ```bash
-curl -sfL https://get.k3s.io/ | sh -sv - --docker
+curl -sfL https://get.k3s.io/ | INSTALL_K3S_VERSION=v1.30.4+k3s1 sh -sv - --docker
 ```
 To check if everything started correctly, you can execute the following commands:
 ```bash
@@ -130,7 +130,7 @@ cat /var/lib/rancher/k3s/server/node-token
 ```
 Then, substitute the read value for ***K3S_MASTER_TOKEN*** and the master's IP address for ***YOUR_MASTER_ADDRESS***:
 ```bash
-curl -sfL https://get.k3s.io/ | K3S_URL=YOUR_MASTER_ADDRESS  K3S_TOKEN=$ K3S_MASTER_TOKEN INSTALL_K3S_EXEC="--docker" sh -
+curl -sfL https://get.k3s.io/ | INSTALL_K3S_VERSION=v1.30.4+k3s1 K3S_URL=YOUR_MASTER_ADDRESS  K3S_TOKEN=$ K3S_MASTER_TOKEN INSTALL_K3S_EXEC="--docker" sh -
 ```
 
 ### Testing container with GPU
